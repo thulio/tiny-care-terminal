@@ -39,8 +39,7 @@ function scrapeTweet(who) {
             }).get();
         })
         .then(function(tweets) {
-          var tweetNumber = Math.floor(Math.random() * tweets.length);
-          resolve({text:tweets[tweetNumber], bot: who});
+          resolve({text:tweets[0], bot: who});
         },function(error) {
           reject('Can\'t scrape tweets. Maybe the user is private or doesn\'t exist?');
         });
