@@ -133,7 +133,11 @@ function doTheTweets() {
         return;
       }
       twitterbot.getTweet(config.twitter[which]).then(function(tweet) {
-        parrotBox.content = getAnsiArt(tweet.text)
+          if (tweet.text.startsWith(':')) {
+            parrotBox.content = getAnsiArt(tweet.text.slice(2));
+          } else {
+              parrotBox.content = getAnsiArt(tweet.text);
+          }
         screen.render();
       },function(error) {
         // Just in case we don't have tweets.
